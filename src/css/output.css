@@ -635,8 +635,16 @@ video {
   width: 1.75rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .rounded-lg {
@@ -704,6 +712,16 @@ video {
   padding-bottom: 0.75rem;
 }
 
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .pt-10 {
   padding-top: 2.5rem;
 }
@@ -759,4 +777,18 @@ video {
 .text-primary-color {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:outline-dotted:focus {
+  outline-style: dotted;
 }
