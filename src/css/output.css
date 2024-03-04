@@ -13,20 +13,16 @@
 }
 
 li .form-checkbox {
-  border-radius: 50rem; 
-  color: aqua;
+  border-radius: 50px;
+  height: 16px;
+  width: 16px; 
+  color: #280909;
 }
 
-.form-checkbox,
-    [type='checkbox'] {
-        border-radius: inherit; /* Reset border-radius to inherit from parent */
-        height: inherit; /* Reset height to inherit from parent */
-        width: inherit; /* Reset width to inherit from parent */
-        background-color: inherit; /* Reset background-color to inherit from parent */
-        border-color: inherit; /* Reset border-color to inherit from parent */
-        border-width: inherit; /* Reset border-width to inherit from parent */
-        --tw-shadow: inherit; /* Reset shadow to inherit from parent */
-    }
+.form-checkbox:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 *,
 ::before,
