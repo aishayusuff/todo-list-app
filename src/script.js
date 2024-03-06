@@ -3,10 +3,13 @@ const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
 
 
+//Sets todoList to empty
+todoList.innerHTML = '';
+
 //adds new task to todoList
 const addsTask = function() {
     let html = ''
-    
+
     //edge case
     if(inputBox.value === '') {
         alert("Input cannot be left blank!")
@@ -21,6 +24,7 @@ const addsTask = function() {
         </li>`
     }
 
+    
     todoList.insertAdjacentHTML("afterbegin", html);
 }
 
