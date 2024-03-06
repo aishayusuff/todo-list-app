@@ -24,8 +24,8 @@ const addsTask = function() {
         </li>`
     }
 
-    
     todoList.insertAdjacentHTML("afterbegin", html);
+    inputBox.value = '';
 }
 
 
