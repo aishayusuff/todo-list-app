@@ -15,14 +15,14 @@ const addsTask = function() {
         return;
     } else {
         const html = ` 
-        <label>
-            <input type="checkbox" class="form-checkbox h-3 w-3 cursor-pointer checked:line-through">
+        <label class="flex items-center">
+            <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
             <span class="select-none">${inputBox.value}</span>
         </label>`
 
         //Creates li element and add class styling
         let li = document.createElement("li");
-        li.classList.add("select-none", "px-3", "pt-3", "pb-4");
+        li.classList.add("select-none", "px-3", "pt-3", "flex", "justify-between", "items-center");
 
         //Set innerHTML of new li element to html
         li.innerHTML = html;
@@ -30,7 +30,8 @@ const addsTask = function() {
         //Creates new span for delete btn and adds after text span
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
-        li.querySelector("label").appendChild(span);
+        span.classList.add("close-btn","text-tert-color")
+        li.appendChild(span);
 
         todoList.insertAdjacentElement("afterbegin", li);
         inputBox.value = '';

@@ -24,6 +24,18 @@ li .form-checkbox {
   box-shadow: none !important;
 }
 
+.close-btn { 
+  font-size: 22px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #280909;
+    border-radius: 30px;
+    color: #e8caca;
+  }
+}
+
+
 *,
 ::before,
 ::after {
@@ -901,12 +913,20 @@ select {
   margin-top: 1.5rem;
 }
 
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
 
 .h-3 {
   height: 0.75rem;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-lvh {
@@ -928,6 +948,7 @@ select {
 .w-7 {
   width: 1.75rem;
 }
+
 
 .w-full {
   width: 100%;
