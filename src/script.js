@@ -30,7 +30,7 @@ const addsTask = function() {
         //Creates new span for delete btn and adds after text span
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
-        span.classList.add("close-btn","text-tert-color")
+        span.classList.add("close-btn","text-tert-color", "text-center")
         li.appendChild(span);
 
         todoList.insertAdjacentElement("afterbegin", li);
