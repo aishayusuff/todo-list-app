@@ -17,7 +17,7 @@ const addsTask = function() {
         const html = ` 
         <label class="flex items-center">
             <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
-            <span class="select-none">${inputBox.value}</span>
+            <span class="select-none cursor-pointer">${inputBox.value}</span>
         </label>`
 
         //Creates li element and add class styling
