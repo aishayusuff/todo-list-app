@@ -14,6 +14,38 @@ const setTasksToLocalStorage = function(tasks){
     localStorage.setItem("tasks", taskJSON)
 }
 
+const displayTasksFromLocalStorage = function() {
+    const tasks = getTasksFromLocalStorage();
+ 
+    if (tasks.length > 0) {
+        tasks.forEach(task => {
+            createsHTML(task)
+        })
+    }
+}
+
+const createsHTML = function(userInput) {
+    const html = ` 
+    <label>
+        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
+        <span class="select-none cursor-pointer">${userInput}</span>
+    </label>`
+
+    //Creates li element and add class styling
+    let li = document.createElement("li");
+    li.classList.add("select-none", "px-3", "pt-3", "flex", "justify-between", "items-center");
+
+    //Set innerHTML of new li element to html
+    li.innerHTML = html;
+
+    //Creates new span for delete btn and adds after text span
+    let span = document.createElement("span");
+    span.innerHTML = "\u00d7";
+    span.classList.add("close-btn","text-tert-color", "text-center")
+     li.appendChild(span);
+
+    return todoList.insertAdjacentElement("afterbegin", li);
+}
 
 //adds new task to todoList
 const addsTask = function() {
@@ -30,27 +62,8 @@ const addsTask = function() {
         console.log(tasks)
         setTasksToLocalStorage(tasks);
 
-        const html = ` 
-        <label>
-            <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
-            <span class="select-none cursor-pointer">${userInput}</span>
-        </label>`
-
-        //Creates li element and add class styling
-        let li = document.createElement("li");
-        li.classList.add("select-none", "px-3", "pt-3", "flex", "justify-between", "items-center");
-
-        //Set innerHTML of new li element to html
-        li.innerHTML = html;
-
-        //Creates new span for delete btn and adds after text span
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        span.classList.add("close-btn","text-tert-color", "text-center")
-        li.appendChild(span);
-
-        todoList.insertAdjacentElement("afterbegin", li);
-        inputBox.value = '';
+       createsHTML(userInput);
+       inputBox.value = '';
     }
 }
 
@@ -64,5 +77,3 @@ todoList.addEventListener("click", (e) => {
     }    
     e.target.parentElement.remove();
 })
-
-
