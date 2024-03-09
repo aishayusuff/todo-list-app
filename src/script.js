@@ -6,18 +6,24 @@ const todoList = document.querySelector(".todo");
 //Sets todoList to empty
 todoList.innerHTML = '';
 
+//To store tasks
+let tasks = [];
+
 //adds new task to todoList
 const addsTask = function() {
+    let userInput = inputBox.value.trim();
 
-    //edge case
-    if(inputBox.value === '') {
+    //stores input in array
+    tasks.push(userInput);
+
+    if(userInput === '') {
         alert("Input cannot be left blank!")
         return;
     } else {
         const html = ` 
         <label>
             <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
-            <span class="select-none cursor-pointer">${inputBox.value}</span>
+            <span class="select-none cursor-pointer">${userInput}</span>
         </label>`
 
         //Creates li element and add class styling
