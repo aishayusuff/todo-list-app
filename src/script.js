@@ -15,7 +15,7 @@ const addsTask = function() {
         return;
     } else {
         const html = ` 
-        <label class="flex items-center">
+        <label>
             <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
             <span class="select-none cursor-pointer">${inputBox.value}</span>
         </label>`
@@ -39,7 +39,15 @@ const addsTask = function() {
 }
 
 
-btn.addEventListener("click", addsTask )
+btn.addEventListener("click", addsTask)
 
+//Deletes item when close btn clicked
+todoList.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("close-btn")) {
+       return
+    } 
+    
+    e.target.parentElement.remove();
+})
 
 

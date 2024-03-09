@@ -7,6 +7,38 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+.checked\:line-through:checked ~ .select-none {
+  text-decoration: line-through;
+}
+
+li .form-checkbox {
+  border-radius: 50px;
+  height: 16px;
+  width: 16px; 
+  color: #280909;
+}
+
+.form-checkbox:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.close-btn { 
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #280909;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #e8caca;
+  }
+}
+
+
 *,
 ::before,
 ::after {
@@ -766,6 +798,10 @@ select {
   border-radius: 0px;
 }
 
+.form-radio {
+  border-radius: 100%;
+}
+
 .form-checkbox:focus,.form-radio:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -792,6 +828,18 @@ select {
 
 @media (forced-colors: active)  {
   .form-checkbox:checked {
+    -webkit-appearance: auto;
+       -moz-appearance: auto;
+            appearance: auto;
+  }
+}
+
+.form-radio:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+}
+
+@media (forced-colors: active)  {
+  .form-radio:checked {
     -webkit-appearance: auto;
        -moz-appearance: auto;
             appearance: auto;
@@ -825,6 +873,18 @@ select {
   background-color: currentColor;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.collapse {
+  visibility: collapse;
+}
+
+.relative {
+  position: relative;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -846,20 +906,32 @@ select {
   margin-right: 1.25rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
+.mt-28 {
+  margin-top: 7rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
+.block {
+  display: block;
 }
 
 .flex {
   display: flex;
+}
+
+.table {
+  display: table;
+}
+
+.contents {
+  display: contents;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-3 {
@@ -874,10 +946,6 @@ select {
   max-height: 24rem;
 }
 
-.w-1\/2 {
-  width: 50%;
-}
-
 .w-3 {
   width: 0.75rem;
 }
@@ -890,8 +958,24 @@ select {
   width: 100%;
 }
 
+.w-1 {
+  width: 0.25rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.border-collapse {
+  border-collapse: collapse;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .cursor-pointer {
@@ -902,6 +986,10 @@ select {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+.resize {
+  resize: both;
 }
 
 .items-center {
@@ -1007,6 +1095,26 @@ select {
   color: rgb(40 9 9 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
+.outline {
+  outline-style: solid;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .checked\:line-through:checked {
   text-decoration-line: line-through;
 }
@@ -1017,19 +1125,7 @@ select {
 }
 
 @media (min-width: 768px) {
-  .md\:mt-28 {
-    margin-top: 7rem;
-  }
-
-  .md\:w-full {
-    width: 100%;
-  }
-
   .md\:w-1\/2 {
     width: 50%;
-  }
-
-  .md\:max-w-md {
-    max-width: 28rem;
   }
 }
