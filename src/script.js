@@ -3,23 +3,33 @@ const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
 
 
-//Sets todoList to empty
-todoList.innerHTML = '';
+const getTasksFromLocalStorage = function() {
+    const taskJSON = localStorage.getItem("tasks");
+    const task = JSON.parse(taskJSON)
+    return task || []
+}
 
-//To store tasks
-let tasks = [];
+const setTasksToLocalStorage = function(tasks){
+    const taskJSON = JSON.stringify(tasks);
+    localStorage.setItem("tasks", taskJSON)
+}
+
 
 //adds new task to todoList
 const addsTask = function() {
     let userInput = inputBox.value.trim();
 
-    //stores input in array
-    tasks.push(userInput);
-
     if(userInput === '') {
         alert("Input cannot be left blank!")
         return;
     } else {
+
+        //stores input in local storage
+        let tasks = getTasksFromLocalStorage();
+        tasks.push(userInput);
+        console.log(tasks)
+        setTasksToLocalStorage(tasks);
+
         const html = ` 
         <label>
             <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
@@ -44,15 +54,14 @@ const addsTask = function() {
     }
 }
 
-
+//Adds new task on btn click
 btn.addEventListener("click", addsTask)
 
 //Deletes item when close btn clicked
 todoList.addEventListener("click", (e) => {
     if (!e.target.classList.contains("close-btn")) {
        return
-    } 
-    
+    }    
     e.target.parentElement.remove();
 })
 
