@@ -7,24 +7,22 @@
         <script src="script.js" defer></script>
         <title>Todo List</title>
     </head>
-    <body class="bg-primary-color">
-        <div class="w-full h-lvh p-3 container">
-            <div class="bg-secondary-color text-tert-color max-h-96 w-2/4 mt-28 mb-5 mx-auto pt-10 pb-16 px-8 rounded-lg">
-                <p class="text-2xl font-semibold flex items-center mb-5">To-Do List <img src="./assets/icon.png" class="w-7 ml-7"/></p>
-                <div class="flex items-center justify-between">
-                    <input type="text" id="input-box" placeholder="enter a new task" class="p-3 text-sm rounded-full text-primary-color flex-1 border focus:outline-none">
-                    <button class="ml-4 px-8 py-2 rounded-full bg-tert-color text-secondary-color text-sm border focus:outline-none btn">add</button>
-                </div>
-                <div class="mt-6">
-                    <ul class="todo">
-                        <li class="select-none px-3 pt-3 pb-4">
-                            <label class="flex ">
-                                <input type="checkbox" class="form-checkbox h-3 w-3 cursor-pointer checked:line-through">
-                                <span class="select-none">Wash hair</span>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
+    <body class="bg-primary-color h-lvh p-3">
+        <div class="bg-secondary-color text-tert-color w-full md:w-1/2 max-h-96 mt-28 mb-5 mx-auto pt-10 pb-16 px-8 rounded-lg">
+            <p class="text-2xl font-semibold flex items-center mb-5">To-Do List <img src="./assets/icon.png" class="w-7 ml-7"/></p>
+            <div class="flex items-center justify-between">
+                <input type="text" id="input-box" placeholder="enter a new task" class="p-3 text-sm rounded-full text-primary-color flex-1 border focus:outline-none">
+                <button class="ml-4 px-8 py-2 rounded-full bg-tert-color text-secondary-color text-sm border focus:outline-none btn">add</button>
+            </div>
+            <div class="mt-6">
+                <ul class="todo">
+                    <li class="select-none px-3 pt-3 pb-4">
+                        <label class="flex ">
+                            <input type="checkbox" class="form-checkbox h-3 w-3 cursor-pointer checked:line-through">
+                            <span class="select-none">Wash hair</span>
+                        </label>
+                    </li>
+                </ul>
             </div>
         </div> 
     </body>

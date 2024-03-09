@@ -7,39 +7,6 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
-/* Custom CSS */
-.checked\:line-through:checked ~ .select-none {
-  text-decoration: line-through;
-}
-
-li .form-checkbox {
-  border-radius: 50px;
-  height: 16px;
-  width: 16px; 
-  color: #280909;
-}
-
-.form-checkbox:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.close-btn { 
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s;
-
-  &:hover {
-    background-color: #280909;
-    border-radius: 50%;
-    cursor: pointer;
-    color: #e8caca;
-  }
-}
-
-
 *,
 ::before,
 ::after {
@@ -772,40 +739,6 @@ select {
   --tw-backdrop-sepia:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .form-checkbox,.form-radio {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -909,16 +842,20 @@ select {
   margin-left: 1.75rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
 }
 
-.mr-5 {
-  margin-right: 1.25rem;
+.mt-28 {
+  margin-top: 7rem;
 }
 
 .flex {
@@ -929,10 +866,6 @@ select {
   height: 0.75rem;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-lvh {
   height: 100lvh;
 }
@@ -941,7 +874,7 @@ select {
   max-height: 24rem;
 }
 
-.w-2\/4 {
+.w-1\/2 {
   width: 50%;
 }
 
@@ -952,7 +885,6 @@ select {
 .w-7 {
   width: 1.75rem;
 }
-
 
 .w-full {
   width: 100%;
@@ -1042,6 +974,10 @@ select {
   padding-top: 0.75rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1078,4 +1014,22 @@ select {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .md\:mt-28 {
+    margin-top: 7rem;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:max-w-md {
+    max-width: 28rem;
+  }
 }
