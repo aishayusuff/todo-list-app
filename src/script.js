@@ -1,8 +1,27 @@
 const inputBox = document.getElementById("input-box");
 const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
+const title = document.querySelector(".title")
+
+//Prompt for user name
+let userName = '';
+do {
+    userName = prompt("Hi new user! can you enter your name, please?");
+    if (!userName) {
+        alert("You cannot use the To-Do list without providing a name.");
+    }
+
+    if (!/^[a-zA-Z]+$/.test(userName)) {
+        alert("Please enter a valid name containing ONLY letters of the alphabet.");
+    }
+} while (!userName || !/^[a-zA-Z]+$/.test(userName));
+
+//Insert username and retains existing img element
+const usernameTextNode = document.createTextNode(`${userName} `)
+title.insertBefore(usernameTextNode, title.firstChild);
 
 
+//Todo list logic
 const getTasksFromLocalStorage = function () {
   const taskJSON = localStorage.getItem("tasks");
   const task = JSON.parse(taskJSON);
