@@ -17,7 +17,7 @@ do {
 } while (!userName || !/^[a-zA-Z]+$/.test(userName));
 
 //Insert username and retains existing img element
-const usernameTextNode = document.createTextNode(`${userName} `)
+const usernameTextNode = document.createTextNode(`${userName}'s `)
 title.insertBefore(usernameTextNode, title.firstChild);
 
 
