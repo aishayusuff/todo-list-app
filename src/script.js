@@ -3,6 +3,7 @@ const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
 const title = document.querySelector(".title")
 
+localStorage.clear()
 //Prompt for user name
 let userName = '';
 do {
@@ -53,7 +54,7 @@ const displayTasksFromLocalStorage = function () {
 const createsHTML = function (userInput, index) {
   const html = ` 
     <label>
-        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
+        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer ${userInput.checked ? "checked" : ""} checked:line-through">
         <span class="select-none cursor-pointer">${userInput}</span>
     </label>`;
 
@@ -80,6 +81,14 @@ const createsHTML = function (userInput, index) {
   span.classList.add("close-btn", "text-tert-color", "text-center");
   li.appendChild(span);
 
+  //Obtains the status of the checkbox on change
+  const checkbox = li.querySelector('input[type="checkbox"]')
+  checkbox.addEventListener('change', () => {
+    const tasks = getTasksFromLocalStorage();
+    tasks[index].checked = checkbox.checked;
+    setTasksToLocalStorage(tasks);
+  })
+
   return todoList.insertAdjacentElement("afterbegin", li);
 };
 
@@ -93,7 +102,10 @@ const addsTask = function () {
   } else {
     //stores input in local storage
     let tasks = getTasksFromLocalStorage();
-    tasks.push(userInput);
+    tasks.push({
+      'task': userInput,
+      'checked': false
+    });
 
     setTasksToLocalStorage(tasks);
 
