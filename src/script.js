@@ -3,7 +3,7 @@ const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
 const title = document.querySelector(".title")
 
-localStorage.clear()
+// localStorage.clear()
 //Prompt for user name
 let userName = '';
 do {
@@ -46,7 +46,7 @@ const displayTasksFromLocalStorage = function () {
 
   if (tasks.length > 0) {
     tasks.forEach((task, index) => {
-      createsHTML(task, index);
+      createsHTML(task.text, index);
     });
   }
 };
@@ -54,7 +54,7 @@ const displayTasksFromLocalStorage = function () {
 const createsHTML = function (userInput, index) {
   const html = ` 
     <label>
-        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer ${userInput.checked ? "checked" : ""} checked:line-through">
+        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer ${userInput.checked ? "checked" : ""}">
         <span class="select-none cursor-pointer">${userInput}</span>
     </label>`;
 
@@ -103,7 +103,7 @@ const addsTask = function () {
     //stores input in local storage
     let tasks = getTasksFromLocalStorage();
     tasks.push({
-      'task': userInput,
+      'text': userInput,
       'checked': false
     });
 
