@@ -1,10 +1,10 @@
 const inputBox = document.getElementById("input-box");
 const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
-const title = document.querySelector(".title")
+const title = document.querySelector(".title");
 
-// localStorage.clear()
-//Prompt for user name
+// localStorage.clear();
+// Prompt for user name
 let userName = '';
 do {
     userName = prompt("Hi new user! can you enter your name, please?");
@@ -20,7 +20,6 @@ do {
 //Insert username and retains existing img element
 const usernameTextNode = document.createTextNode(`${userName}'s `)
 title.insertBefore(usernameTextNode, title.firstChild);
-
 
 //Todo list logic
 const getTasksFromLocalStorage = function () {
@@ -38,7 +37,7 @@ const removesTaskFromLocalStorage = function (taskIndex) {
   const tasks = getTasksFromLocalStorage();
 
   tasks.splice(taskIndex, 1);
-  setTasksToLocalStorage(tasks)
+  setTasksToLocalStorage(tasks);
 };
 
 const displayTasksFromLocalStorage = function () {
@@ -46,16 +45,16 @@ const displayTasksFromLocalStorage = function () {
 
   if (tasks.length > 0) {
     tasks.forEach((task, index) => {
-      createsHTML(task.text, index);
+      createsHTML(task, index);
     });
   }
 };
 
-const createsHTML = function (userInput, index) {
+const createsHTML = function (task, index) {
   const html = ` 
     <label>
-        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer ${userInput.checked ? "checked" : ""}">
-        <span class="select-none cursor-pointer">${userInput}</span>
+        <input type="checkbox" class="form-checkbox h-3 w-3 mr-5 cursor-pointer checked:line-through">
+        <span class="select-none cursor-pointer">${task.text}</span>
     </label>`;
 
   //Creates li element and add class styling
@@ -69,8 +68,8 @@ const createsHTML = function (userInput, index) {
     "items-center"
   );
 
-  //sets task index as an attribute 
-  li.setAttribute("data-task-index", index)
+  //sets task index as an attribute
+  li.setAttribute("data-task-index", index);
 
   //Set innerHTML of new li element to html
   li.innerHTML = html;
@@ -82,12 +81,29 @@ const createsHTML = function (userInput, index) {
   li.appendChild(span);
 
   //Obtains the status of the checkbox on change
-  const checkbox = li.querySelector('input[type="checkbox"]')
-  checkbox.addEventListener('change', () => {
+  const checkbox = li.querySelector('input[type="checkbox"]');
+  checkbox.checked = task.completed;
+
+  checkbox.addEventListener("change", (e) => {
+    if (e.target.tagName !== "INPUT") {
+      return;
+    }
+
     const tasks = getTasksFromLocalStorage();
-    tasks[index].checked = checkbox.checked;
+    tasks[index].completed = e.target.checked;
     setTasksToLocalStorage(tasks);
-  })
+
+  
+    /*NOTE: Had to use trad IF/ELSE instead of ternary directly in html above
+    because checked:line-through still needs to be present inside html, for persisting.
+    IF/ELSE below handles the toggling.
+    */
+    if (tasks[index].completed) {
+      e.target.classList.add("checked:line-through");
+    } else {
+      e.target.classList.remove("checked:line-through");
+    }
+  });
 
   return todoList.insertAdjacentElement("afterbegin", li);
 };
@@ -102,14 +118,16 @@ const addsTask = function () {
   } else {
     //stores input in local storage
     let tasks = getTasksFromLocalStorage();
-    tasks.push({
-      'text': userInput,
-      'checked': false
-    });
+    const newTask = {
+      text: userInput,
+      completed: false,
+    };
+
+    tasks.push(newTask);
 
     setTasksToLocalStorage(tasks);
 
-    createsHTML(userInput, tasks.length - 1);
+    createsHTML(newTask, tasks.length - 1);
     inputBox.value = "";
   }
 };
@@ -129,8 +147,8 @@ todoList.addEventListener("click", (e) => {
   if (!e.target.classList.contains("close-btn")) {
     return;
   }
-  
-  const taskIndex = e.target.parentElement.getAttribute("data-task-index")
+
+  const taskIndex = e.target.parentElement.getAttribute("data-task-index");
   removesTaskFromLocalStorage(taskIndex);
 
   e.target.parentElement.remove();
