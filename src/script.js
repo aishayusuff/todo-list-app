@@ -3,22 +3,27 @@ const btn = document.querySelector(".btn");
 const todoList = document.querySelector(".todo");
 const title = document.querySelector(".title");
 
-// localStorage.clear();
+
 // Prompt for user name
-let userName = '';
-do {
+let userName = localStorage.getItem("userName");
+
+if (!userName) {
+  do {
     userName = prompt("Hi new user! can you enter your name, please?");
     if (!userName) {
-        alert("You cannot use the To-Do list without providing a name.");
+      alert("You cannot use the To-Do list without providing a name.");
+    } else if (!/^[a-zA-Z]+$/.test(userName)) {
+      alert(
+        "Please enter a valid name containing ONLY letters of the alphabet."
+      );
+    } else {
+      localStorage.setItem("userName", userName);
     }
-
-    if (!/^[a-zA-Z]+$/.test(userName)) {
-        alert("Please enter a valid name containing ONLY letters of the alphabet.");
-    }
-} while (!userName || !/^[a-zA-Z]+$/.test(userName));
+  } while (!userName || !/^[a-zA-Z]+$/.test(userName));
+}
 
 //Insert username and retains existing img element
-const usernameTextNode = document.createTextNode(`${userName}'s `)
+const usernameTextNode = document.createTextNode(`${userName}'s `);
 title.insertBefore(usernameTextNode, title.firstChild);
 
 //Todo list logic
@@ -93,7 +98,6 @@ const createsHTML = function (task, index) {
     tasks[index].completed = e.target.checked;
     setTasksToLocalStorage(tasks);
 
-  
     /*NOTE: Had to use trad IF/ELSE instead of ternary directly in html above
     because checked:line-through still needs to be present inside html, for persisting.
     IF/ELSE below handles the toggling.
